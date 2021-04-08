@@ -54,13 +54,13 @@ import java.util.function.Function;
  * important.
  *
  * <p>An instance of HashMap has two parameters that affect its
- * performance: <i>initial capacity</i> and <i>load factor</i>.  The
- * <i>capacity</i> is the number of buckets in the hash table, and the initial
+ * performance: initial capacity and load factor.  The
+ * capacity is the number of buckets in the hash table, and the initial
  * capacity is simply the capacity at the time the hash table is created.  The
- * <i>load factor</i> is a measure of how full the hash table is allowed to
+ * load factor is a measure of how full the hash table is allowed to
  * get before its capacity is automatically increased.  When the number of
  * entries in the hash table exceeds the product of the load factor and the
- * current capacity, the hash table is <i>rehashed</i> (that is, internal data
+ * current capacity, the hash table is rehashed (that is, internal data
  * structures are rebuilt) so that the hash table has approximately twice the
  * number of buckets.
  *
@@ -86,7 +86,7 @@ import java.util.function.Function;
  *
  * <p><strong>Note that this implementation is not synchronized.</strong>
  * If multiple threads access a hash map concurrently, and at least one of
- * the threads modifies the map structurally, it <i>must</i> be
+ * the threads modifies the map structurally, it must be
  * synchronized externally.  (A structural modification is any operation
  * that adds or deletes one or more mappings; merely changing the value
  * associated with a key that an instance already contains is not a
@@ -100,7 +100,7 @@ import java.util.function.Function;
  *   Map m = Collections.synchronizedMap(new HashMap(...));</pre>
  *
  * <p>The iterators returned by all of this class's "collection view methods"
- * are <i>fail-fast</i>: if the map is structurally modified at any time after
+ * are fail-fast: if the map is structurally modified at any time after
  * the iterator is created, in any way except through the iterator's own
  * remove method, the iterator will throw a
  * {@link ConcurrentModificationException}.  Thus, in the face of concurrent
@@ -113,8 +113,8 @@ import java.util.function.Function;
  * presence of unsynchronized concurrent modification.  Fail-fast iterators
  * throw ConcurrentModificationException on a best-effort basis.
  * Therefore, it would be wrong to write a program that depended on this
- * exception for its correctness: <i>the fail-fast behavior of iterators
- * should be used only to detect bugs.</i>
+ * exception for its correctness: the fail-fast behavior of iterators
+ * should be used only to detect bugs.
  *
  * <p>This class is a member of the
  * <a href="{@docRoot}/../technotes/guides/collections/index.html">
@@ -1291,7 +1291,9 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * Returns a shallow copy of this HashMap instance: the keys and
      * values themselves are not cloned.
      *
-     * @return a shallow copy of this map
+     * 返回此HashMap实例的浅表副本：key和values本身不会被克隆。
+     *
+     * @return a shallow copy of this map 返回map的浅拷贝
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -1320,12 +1322,18 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * Save the state of the HashMap instance to a stream (i.e.,
      * serialize it).
      *
-     * @serialData The <i>capacity</i> of the HashMap (the length of the
-     *             bucket array) is emitted (int), followed by the
-     *             <i>size</i> (an int, the number of key-value
-     *             mappings), followed by the key (Object) and value (Object)
-     *             for each key-value mapping.  The key-value mappings are
+     * 将HashMap实例的状态保存到流中（即序列化它）。
+     *
+     * @serialData The capacity of the HashMap  is emitted , followed by the
+     *             size , followed by the key (Object) and value (Object)
+     *             for each key-value mapping.
+     *
+     *             发出HashMap的容量，然后是size，然后是每个键值映射的键（对象）和值（对象）。
+     *
+     *             The key-value mappings are
      *             emitted in no particular order.
+     *
+     *             key-value映射不按特定顺序发出
      */
     private void writeObject(java.io.ObjectOutputStream s)
         throws IOException {
@@ -1338,8 +1346,10 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     }
 
     /**
-     * Reconstitute the {@code HashMap} instance from a stream (i.e.,
+     * Reconstitute the HashMap instance from a stream (i.e.,
      * deserialize it).
+     *
+     * 从流中重构HashMap实例（即，将其反序列化）。
      */
     private void readObject(java.io.ObjectInputStream s)
         throws IOException, ClassNotFoundException {
@@ -1707,22 +1717,27 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     /*
      * The following package-protected methods are designed to be
      * overridden by LinkedHashMap, but not by any other subclass.
+     *
+     * 以下受程序包保护的方法被设计为可以被LinkedHashMap覆盖，但不能被任何其他子类覆盖。
+     *
      * Nearly all other internal methods are also package-protected
      * but are declared final, so can be used by LinkedHashMap, view
      * classes, and HashSet.
+     *
+     * 几乎所有其他内部方法也都受程序包保护，但都声明为final，因此可以由LinkedHashMap，view类和HashSet使用。
      */
 
-    // Create a regular (non-tree) node
+    // Create a regular (non-tree) node 创建一个常规(非树)节点
     Node<K,V> newNode(int hash, K key, V value, Node<K,V> next) {
         return new Node<>(hash, key, value, next);
     }
 
-    // For conversion from TreeNodes to plain nodes
+    // For conversion from TreeNodes to plain nodes  用于从TreeNodes转换为纯节点
     Node<K,V> replacementNode(Node<K,V> p, Node<K,V> next) {
         return new Node<>(p.hash, p.key, p.value, next);
     }
 
-    // Create a tree bin node
+    // Create a tree bin node 创建一个树bin节点
     TreeNode<K,V> newTreeNode(int hash, K key, V value, Node<K,V> next) {
         return new TreeNode<>(hash, key, value, next);
     }
@@ -1734,6 +1749,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
     /**
      * Reset to initial default state.  Called by clone and readObject.
+     *
+     * 重置为初始默认状态。由clone和readObject调用。
      */
     void reinitialize() {
         table = null;
@@ -1745,12 +1762,12 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         size = 0;
     }
 
-    // Callbacks to allow LinkedHashMap post-actions
+    // Callbacks to allow LinkedHashMap post-actions  允许LinkedHashMap后置处理的回调
     void afterNodeAccess(Node<K,V> p) { }
     void afterNodeInsertion(boolean evict) { }
     void afterNodeRemoval(Node<K,V> p) { }
 
-    // Called only from writeObject, to ensure compatible ordering.
+    // Called only from writeObject, to ensure compatible ordering.  仅由writeObject调用，以确保兼容的顺序。
     void internalWriteEntries(java.io.ObjectOutputStream s) throws IOException {
         Node<K,V>[] tab;
         if (size > 0 && (tab = table) != null) {
@@ -1770,6 +1787,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * Entry for Tree bins. Extends LinkedHashMap.Entry (which in turn
      * extends Node) so can be used as extension of either regular or
      * linked node.
+     *
+     * 进入树箱。扩展LinkedHashMap.Entry（进而扩展Node），因此可以用作常规或链接节点的扩展。
      */
     static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
         TreeNode<K,V> parent;  // red-black tree links
@@ -1782,7 +1801,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
 
         /**
-         * Returns root of tree containing this node.
+         * Returns root of tree containing this node. 返回包含此节点的树的根。
          */
         final TreeNode<K,V> root() {
             for (TreeNode<K,V> r = this, p;;) {
@@ -1793,7 +1812,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
 
         /**
-         * Ensures that the given root is the first node of its bin.
+         * Ensures that the given root is the first node of its bin. 确保给定的根是其bin的第一个节点。
          */
         static <K,V> void moveRootToFront(Node<K,V>[] tab, TreeNode<K,V> root) {
             int n;
@@ -1821,6 +1840,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
          * Finds the node starting at root p with the given hash and key.
          * The kc argument caches comparableClassFor(key) upon first use
          * comparing keys.
+         *
+         * 从根节点p开始查找具有给定哈希和键的。 kc参数在首次使用比较键时，会缓存可比较的ClassFor（key）。
          */
         final TreeNode<K,V> find(int h, Object k, Class<?> kc) {
             TreeNode<K,V> p = this;
@@ -1850,7 +1871,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
 
         /**
-         * Calls find for root node.
+         * Calls find for root node. 调用查找根节点。
          */
         final TreeNode<K,V> getTreeNode(int h, Object k) {
             return ((parent != null) ? root() : this).find(h, k, null);
@@ -1858,10 +1879,20 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
         /**
          * Tie-breaking utility for ordering insertions when equal
-         * hashCodes and non-comparable. We don't require a total
+         * hashCodes and non-comparable.
+         *
+         * 用于在hashCodes相等且不可比较时对插入进行排序。
+         *
+         * We don't require a total
          * order, just a consistent insertion rule to maintain
-         * equivalence across rebalancings. Tie-breaking further than
+         * equivalence across rebalancings.
+         *
+         * 我们不需要所有的顺序，只需一个一致的插入规则即可在平衡中保持等价。
+         *
+         * Tie-breaking further than
          * necessary simplifies testing a bit.
+         *
+         *
          */
         static int tieBreakOrder(Object a, Object b) {
             int d;
@@ -1875,7 +1906,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
         /**
          * Forms tree of the nodes linked from this node.
-         * @return root of tree
+         * @return root of tree 返回树的根节点
          */
         final void treeify(Node<K,V>[] tab) {
             TreeNode<K,V> root = null;
@@ -1922,6 +1953,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         /**
          * Returns a list of non-TreeNodes replacing those linked from
          * this node.
+         *
+         * 返回非TreeNode的列表，该列表替换从该节点链接的非TreeNode。
          */
         final Node<K,V> untreeify(HashMap<K,V> map) {
             Node<K,V> hd = null, tl = null;
@@ -1937,7 +1970,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
 
         /**
-         * Tree version of putVal.
+         * Tree version of putVal. putVal的树版本。
          */
         final TreeNode<K,V> putTreeVal(HashMap<K,V> map, Node<K,V>[] tab,
                                        int h, K k, V v) {
@@ -1987,13 +2020,23 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
         /**
          * Removes the given node, that must be present before this call.
+         *
+         * 删除此调用之前必须存在的给定节点。
+         *
          * This is messier than typical red-black deletion code because we
          * cannot swap the contents of an interior node with a leaf
          * successor that is pinned by "next" pointers that are accessible
-         * independently during traversal. So instead we swap the tree
+         * independently during traversal.
+         *
+         * 这比典型的红黑删除代码更为混乱，因为我们无法与内部后继节点交换内容，该内部后继节点的叶后继对象由遍历期间可独立访问的“下一个”指针固定。
+         *
+         * So instead we swap the tree
          * linkages. If the current tree appears to have too few nodes,
          * the bin is converted back to a plain bin. (The test triggers
          * somewhere between 2 and 6 nodes, depending on tree structure).
+         *
+         * 因此，我们交换树链接。如果当前树的节点似乎太少，则将bin转换回普通bin。 （测试触发2到6个节点之间的某个位置，具体取决于树的结构）。
+         *
          */
         final void removeTreeNode(HashMap<K,V> map, Node<K,V>[] tab,
                                   boolean movable) {
@@ -2092,8 +2135,14 @@ public class HashMap<K,V> extends AbstractMap<K,V>
 
         /**
          * Splits nodes in a tree bin into lower and upper tree bins,
-         * or untreeifies if now too small. Called only from resize;
+         * or untreeifies if now too small.
+         *
+         * 将树bin中的节点拆分为较高的树bin和较低的树bin，或者如果树现在太小，则取消树化。
+         *
+         * Called only from resize;
          * see above discussion about split bits and indices.
+         *
+         * 仅从调整大小调用；请参阅上面有关拆分位和索引的讨论。
          *
          * @param map the map
          * @param tab the table for recording bin heads
@@ -2334,7 +2383,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
 
         /**
-         * Recursive invariant check
+         * Recursive invariant check  递归不变检查
          */
         static <K,V> boolean checkInvariants(TreeNode<K,V> t) {
             TreeNode<K,V> tp = t.parent, tl = t.left, tr = t.right,
