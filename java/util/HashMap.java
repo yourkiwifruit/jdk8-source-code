@@ -42,7 +42,7 @@ import java.util.function.Function;
  *  Object clone(); 返回HashMap的浅拷贝。k和v本身不会被克隆。
  *
  *  V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) 拿到指定的key在map中的value，
- *  然后放到remappingFunction方法中，不管value存不存在，都进行操作，完成后保存到map中，返回的是新计算的value。
+ *  然后放到remappingFunction方法中，不管value存不存在，都进行操作，完成后将计算结果value保存到map中，返回的是新计算的value。
  *
  *  V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction) 先查看指定key在map中是否存在，当key不存在时，
  *  会执行后面的mappingFunction方法，然后将key和mappingFunction计算的结果存入map中，最终返回新计算的value，否则返回key对应的value。
