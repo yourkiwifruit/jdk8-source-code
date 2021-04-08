@@ -38,47 +38,29 @@ import java.util.function.Function;
 /**
  * 常用方法含义速记：
  *  void clear(); 删除map中的所有k-v
+ *
  *  Object clone(); 返回HashMap的浅拷贝。k和v本身不会被克隆。
- *  V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) 拿到指定的key在map中的value，然后放到remappingFunction方法中，不管value存不存在，都进行操作，完成后保存到map中，返回的是新计算的value。
- *  V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction) 先查看指定key在map中是否存在，当key不存在时，会执行后面的mappingFunction方法，然后将key和mappingFunction计算的结果存入map中，最终返回新计算的value，否则返回key对应的value。
- *  V computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) 先查看指定key在map中是否存在，当key存在时，会执行后面的remappingFunction方法，完成后保存到map中，返回新计算的value，否则返回null。
+ *
+ *  V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) 拿到指定的key在map中的value，
+ *  然后放到remappingFunction方法中，不管value存不存在，都进行操作，完成后保存到map中，返回的是新计算的value。
+ *
+ *  V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction) 先查看指定key在map中是否存在，当key不存在时，
+ *  会执行后面的mappingFunction方法，然后将key和mappingFunction计算的结果存入map中，最终返回新计算的value，否则返回key对应的value。
+ *
+ *  V computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) 先查看指定key在map中是否存在，
+ *  当key存在时，会执行后面的remappingFunction方法，完成后保存到map中，返回新计算的value，否则返回null。
+ *
  *  boolean containsKey(Object key) 如果map中包含指定的key，就返回true，否则返回false。
+ *
  *  boolean containsValue(Object value) 如果map中包含指定的value，就返回true，否则返回false。
+ *
  *  Set<Map.Entry<K,V>> entrySet() 返回map中包含所有k-v的Set集合。
+ *
  *  void forEach(BiConsumer<? super K,? super V> action) 对此映射中的每个条目执行给定的action操作，直到所有条目都被处理或操作引发异常。
+ *
  *  V get(Object key) 返回到指定key所映射的value或者null，当map中没有指定key存在时，返回null，也有可能指定的key存放的就是null值。
+ *
  *  boolean isEmpty() 如果此地图不包含k-v映射，则返回true。
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
- *
  *
  *
  */
