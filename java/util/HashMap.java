@@ -37,18 +37,18 @@ import java.util.function.Function;
 
 /**
  * 常用方法含义速记：
- *  void clear(); 删除map中的所有k-v
+ *  void clear(); 删除map中的所有k-v。
  *
  *  Object clone(); 返回HashMap的浅拷贝。k和v本身不会被克隆。
  *
- *  V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) 拿到指定的key在map中的value，
- *  然后放到remappingFunction方法中，不管value存不存在，都进行操作，完成后将计算结果value保存到map中，返回的是新计算的value。
+ *  V compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) 拿到指定的key在map中的value，不管value存不存在，
+ *  都放到remappingFunction方法中，进行操作，完成后将计算结果value保存到map中，返回的是新计算的value。
  *
  *  V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction) 先查看指定key在map中是否存在，当key不存在时，
- *  会执行后面的mappingFunction方法，然后将key和mappingFunction计算的结果存入map中，最终返回新计算的value，否则返回key对应的value。
+ *  会执行后面的mappingFunction方法，然后将key和mappingFunction计算的value存入map中，最终返回新计算的value，否则返回key对应的value。
  *
  *  V computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction) 先查看指定key在map中是否存在，
- *  当key存在时，会执行后面的remappingFunction方法，完成后保存到map中，返回新计算的value，否则返回null。
+ *  当key存在时，会执行后面的remappingFunction方法，完成后将计算出的newvalue保存到map中，然后返回newvalue，否则返回null。
  *
  *  boolean containsKey(Object key) 如果map中包含指定的key，就返回true，否则返回false。
  *
@@ -58,11 +58,35 @@ import java.util.function.Function;
  *
  *  void forEach(BiConsumer<? super K,? super V> action) 对此映射中的每个条目执行给定的action操作，直到所有条目都被处理或操作引发异常。
  *
- *  V get(Object key) 返回到指定key所映射的value或者null，当map中没有指定key存在时，返回null，也有可能指定的key存放的就是null值。
+ *  V get(Object key) 返回指定key所映射的value或者null，当map中没有指定key存在时，返回null，也有可能指定的key存放的就是null值。
  *
- *  boolean isEmpty() 如果此地图不包含k-v映射，则返回true。
+ *  boolean isEmpty() 如果map中不包含任何一个k-v映射时，则返回true，否则返回false。
  *
+ *  Set<K> keySet() 返回map中所有key所组成的Set集合。
  *
+ *  V merge(K key, V value, BiFunction<? super V,? super V,? extends V> remappingFunction) 如果与当前的key相关联的oldvalue
+ *  为null或者节点不存在时，直接取paramvalue作为结果，并返回。如果，oldvalue有值，将会把paramvalue和oldvalue传递到 remappingFunction
+ *  方法中，计算出newvalue，然后返回newvalue，如果返回的newvalue=null，则删除节点。
+ *
+ *  V put(K key, V value) 将指定的key与指定value相关联。返回之前与key相关联value，如果key没有对应的value，则返回null。
+ *
+ *  void putAll(Map<? extends K,? extends V> m) 将parammap的所有映射复制到当前的map中。
+ *
+ *  V putIfAbsent(K key, V value) 如果paramkey尚未与某个value相关联(或映射到 null),则将其与paramvalue相关联并返回 null,否则返回当前值。
+ *
+ *  V remove(Object key) 从该Map中删除paramkey的映射（如果存在）。
+ *
+ *  boolean remove(Object key, Object value) 通过指定映射的方式，删除k-v，删除成功返回true，否则false。
+ *
+ *  V replace(K key, V value) 只有在当前Map中包含key,才用paramvalue去替换原来的值，然后返回newvalue，否则返回false
+ *
+ *  boolean replace(K key, V oldValue, V newValue) 只有在当前Map中paramkey的映射存在且映射的值等于oldValue时才用newValue去替换原来的值，然后返回true ，否则返回false。
+ *
+ *  void replaceAll(BiFunction<? super K,? super V,? extends V> function) 对Map中的每个映射执行function指定的操作，并用function的执行结果替换原来的值。
+ *
+ *  int size() 返回此map中k-v映射的数量。
+ *
+ *  Collection<V> values() 返回此Map中包含的values的Collection。
  */
 public class HashMap<K,V> extends AbstractMap<K,V>
     implements Map<K,V>, Cloneable, Serializable {
