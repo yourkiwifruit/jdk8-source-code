@@ -66,8 +66,10 @@ public class HashSet<E>
     private static final Object PRESENT = new Object();
 
     /**
-     * Constructs a new, empty set; the backing <tt>HashMap</tt> instance has
+     * Constructs a new, empty set; the backing HashMap instance has
      * default initial capacity (16) and load factor (0.75).
+     *
+     * 构造一个新的空集；支持的HashMap实例具有默认的初始容量（16）和负载因子（0.75）。
      */
     public HashSet() {
         map = new HashMap<>();
@@ -75,9 +77,11 @@ public class HashSet<E>
 
     /**
      * Constructs a new set containing the elements in the specified
-     * collection.  The <tt>HashMap</tt> is created with default load factor
+     * collection.  The HashMap is created with default load factor
      * (0.75) and an initial capacity sufficient to contain the elements in
      * the specified collection.
+     *
+     * 构造一个新集合，其中包含指定集合中的元素。使用默认的加载因子（0.75）和足以容纳指定集合中的元素的初始容量创建HashMap。
      *
      * @param c the collection whose elements are to be placed into this set
      * @throws NullPointerException if the specified collection is null
@@ -88,8 +92,10 @@ public class HashSet<E>
     }
 
     /**
-     * Constructs a new, empty set; the backing <tt>HashMap</tt> instance has
+     * Constructs a new, empty set; the backing HashMap instance has
      * the specified initial capacity and the specified load factor.
+     *
+     * 构造一个新的空集；支持的HashMap实例具有指定的初始容量和指定的负载系数。
      *
      * @param      initialCapacity   the initial capacity of the hash map
      * @param      loadFactor        the load factor of the hash map
@@ -101,8 +107,10 @@ public class HashSet<E>
     }
 
     /**
-     * Constructs a new, empty set; the backing <tt>HashMap</tt> instance has
+     * Constructs a new, empty set; the backing HashMap instance has
      * the specified initial capacity and default load factor (0.75).
+     *
+     * 构造一个新的空集；支持的HashMap实例具有指定的初始容量和默认负载因子（0.75）。
      *
      * @param      initialCapacity   the initial capacity of the hash table
      * @throws     IllegalArgumentException if the initial capacity is less
@@ -117,6 +125,9 @@ public class HashSet<E>
      * constructor is only used by LinkedHashSet.) The backing
      * HashMap instance is a LinkedHashMap with the specified initial
      * capacity and the specified load factor.
+     *
+     * 构造一个新的空链接哈希集。（此程序包私有构造函数仅由LinkedHashSet使用。）
+     * 支持的HashMap实例是具有指定的初始容量和指定的加载因子的LinkedHashMap。
      *
      * @param      initialCapacity   the initial capacity of the hash map
      * @param      loadFactor        the load factor of the hash map
@@ -133,6 +144,8 @@ public class HashSet<E>
      * Returns an iterator over the elements in this set.  The elements
      * are returned in no particular order.
      *
+     * 返回此集合中元素的迭代器。元素以不特定的顺序返回。
+     *
      * @return an Iterator over the elements in this set
      * @see ConcurrentModificationException
      */
@@ -143,6 +156,8 @@ public class HashSet<E>
     /**
      * Returns the number of elements in this set (its cardinality).
      *
+     * 返回此集合中的元素数（其基数）。
+     *
      * @return the number of elements in this set (its cardinality)
      */
     public int size() {
@@ -150,22 +165,27 @@ public class HashSet<E>
     }
 
     /**
-     * Returns <tt>true</tt> if this set contains no elements.
+     * Returns true if this set contains no elements.
      *
-     * @return <tt>true</tt> if this set contains no elements
+     * 如果此集合不包含任何元素，则返回true。
+     *
+     * @return true if this set contains no elements
      */
     public boolean isEmpty() {
         return map.isEmpty();
     }
 
     /**
-     * Returns <tt>true</tt> if this set contains the specified element.
-     * More formally, returns <tt>true</tt> if and only if this set
-     * contains an element <tt>e</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>.
+     * Returns true if this set contains the specified element.
+     * More formally, returns true if and only if this set
+     * contains an element e such that
+     * (o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e)).
+     *
+     * 如果此集合包含指定的元素，则返回true。更正式地讲，当且仅当此集合包含元素e使得
+     * （o == null？e == null：o.equals（e））时才返回true。
      *
      * @param o element whose presence in this set is to be tested
-     * @return <tt>true</tt> if this set contains the specified element
+     * @return true if this set contains the specified element
      */
     public boolean contains(Object o) {
         return map.containsKey(o);
@@ -173,14 +193,18 @@ public class HashSet<E>
 
     /**
      * Adds the specified element to this set if it is not already present.
-     * More formally, adds the specified element <tt>e</tt> to this set if
-     * this set contains no element <tt>e2</tt> such that
-     * <tt>(e==null&nbsp;?&nbsp;e2==null&nbsp;:&nbsp;e.equals(e2))</tt>.
+     * More formally, adds the specified element e to this set if
+     * this set contains no element e2 such that
+     * (e==null&nbsp;?&nbsp;e2==null&nbsp;:&nbsp;e.equals(e2)).
      * If this set already contains the element, the call leaves the set
-     * unchanged and returns <tt>false</tt>.
+     * unchanged and returns false.
+     *
+     * 如果指定的元素尚不存在，则将其添加到该集合中。更正式地说，如果此集合不包含元素e2使
+     * 得（e == null？e2 == null：e.equals（e2）），则将指定的元素e添加到该集合中。
+     * 如果此集合已包含该元素，则调用将使该集合保持不变并返回false。
      *
      * @param e element to be added to this set
-     * @return <tt>true</tt> if this set did not already contain the specified
+     * @return true if this set did not already contain the specified
      * element
      */
     public boolean add(E e) {
@@ -189,15 +213,20 @@ public class HashSet<E>
 
     /**
      * Removes the specified element from this set if it is present.
-     * More formally, removes an element <tt>e</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))</tt>,
-     * if this set contains such an element.  Returns <tt>true</tt> if
+     * More formally, removes an element e such that
+     * (o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e)),
+     * if this set contains such an element.  Returns true if
      * this set contained the element (or equivalently, if this set
      * changed as a result of the call).  (This set will not contain the
      * element once the call returns.)
      *
+     * 如果存在，则从此集合中删除指定的元素。更正式地讲，如果此集合包含这样的元素，
+     * 则删除元素e使其（o == null？e == null：o.equals（e））。
+     * 如果此集合包含元素，则返回true（或者等效地，如果此集合由于调用而更改），
+     * 则返回true。 （一旦调用返回，此集合将不包含该元素。）
+     *
      * @param o object to be removed from this set, if present
-     * @return <tt>true</tt> if the set contained the specified element
+     * @return true if the set contained the specified element
      */
     public boolean remove(Object o) {
         return map.remove(o)==PRESENT;
@@ -206,14 +235,18 @@ public class HashSet<E>
     /**
      * Removes all of the elements from this set.
      * The set will be empty after this call returns.
+     *
+     * 从该集合中删除所有元素。该调用返回后，该集合将为空。
      */
     public void clear() {
         map.clear();
     }
 
     /**
-     * Returns a shallow copy of this <tt>HashSet</tt> instance: the elements
+     * Returns a shallow copy of this HashSet instance: the elements
      * themselves are not cloned.
+     *
+     * 返回此HashSet实例的浅表副本：元素本身未克隆。
      *
      * @return a shallow copy of this set
      */
@@ -229,10 +262,12 @@ public class HashSet<E>
     }
 
     /**
-     * Save the state of this <tt>HashSet</tt> instance to a stream (that is,
+     * Save the state of this HashSet instance to a stream (that is,
      * serialize it).
      *
-     * @serialData The capacity of the backing <tt>HashMap</tt> instance
+     * 将此HashSet实例的状态保存到流（即，对其进行序列化）。
+     *
+     * @serialData The capacity of the backing HashMap instance
      *             (int), and its load factor (float) are emitted, followed by
      *             the size of the set (the number of elements it contains)
      *             (int), followed by all of its elements (each an Object) in
@@ -256,8 +291,10 @@ public class HashSet<E>
     }
 
     /**
-     * Reconstitute the <tt>HashSet</tt> instance from a stream (that is,
+     * Reconstitute the HashSet instance from a stream (that is,
      * deserialize it).
+     *
+     * 从流中重构HashSet实例（即，将其反序列化）。
      */
     private void readObject(java.io.ObjectInputStream s)
         throws java.io.IOException, ClassNotFoundException {
@@ -307,6 +344,9 @@ public class HashSet<E>
      * Creates a <em><a href="Spliterator.html#binding">late-binding</a></em>
      * and <em>fail-fast</em> {@link Spliterator} over the elements in this
      * set.
+     *
+     * 在此集合中的元素上创建late-binding和故障快速 Spliterator。更详细
+     * 解释https://blog.csdn.net/shenshaoming/article/details/100637484
      *
      * <p>The {@code Spliterator} reports {@link Spliterator#SIZED} and
      * {@link Spliterator#DISTINCT}.  Overriding implementations should document
