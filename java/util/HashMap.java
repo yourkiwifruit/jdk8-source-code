@@ -88,6 +88,13 @@ import java.util.function.Function;
  *
  *  Collection<V> values() 返回此Map中包含的values的Collection。
  */
+
+/**
+ * 相关问题：
+ *  - 详细说明private的writeObject是怎么调用的？https://blog.csdn.net/u014653197/article/details/78114041
+ *
+ */
+
 public class HashMap<K,V> extends AbstractMap<K,V>
     implements Map<K,V>, Cloneable, Serializable {
 
