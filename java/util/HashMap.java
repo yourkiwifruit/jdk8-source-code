@@ -320,6 +320,13 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * cheapest possible way to reduce systematic lossage, as well as
      * to incorporate impact of the highest bits that would otherwise
      * never be used in index calculations because of table bounds.
+     *
+     * 计算key.hashCode（）并将散列的（XOR）较高的位散布到较低的位。
+     * 因为该表使用2的幂次掩码，所以仅在当前掩码上方的位中发生变化的哈希集将始终发生冲突。
+     * （众所周知的示例是在小表中保存连续整数的Float键集。）因此，我们应用了一种将向下扩展较高位的影响的变换。
+     * 在速度，实用性和位扩展质量之间需要权衡。由于许多常见的哈希集已经合理分布（因此不能从扩展中受益），
+     * 并且由于我们使用树来处理容器中的大量冲突，因此我们仅以最便宜的方式对一些移位后的位进行XOR，
+     * 以减少系统损失，以及合并最高位的影响，否则由于表范围的限制，这些位将永远不会在索引计算中使用。
      */
     static final int hash(Object key) {
         int h;
@@ -329,6 +336,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     /**
      * Returns x's Class if it is of the form "class C implements
      * Comparable<C>", else null.
+     *
+     * 如果x的形式为“ C类实现Comparable”，否则为null
      */
     static Class<?> comparableClassFor(Object x) {
         if (x instanceof Comparable) {
@@ -352,6 +361,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     /**
      * Returns k.compareTo(x) if x matches kc (k's screened comparable
      * class), else 0.
+     *
+     * 如果x与kc（k的筛选的可比类）匹配，则返回k.compareTo（x），否则为0
      */
     @SuppressWarnings({"rawtypes","unchecked"}) // for cast to Comparable
     static int compareComparables(Class<?> kc, Object k, Object x) {
@@ -360,7 +371,7 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     }
 
     /**
-     * Returns a power of two size for the given target capacity.
+     * 对于给定的目标容量，返回最接近2的幂的那个数。
      */
     static final int tableSizeFor(int cap) {
         int n = cap - 1;
