@@ -28,71 +28,111 @@ package java.lang;
 import java.util.Arrays;
 
 /**
- * A thread-safe, mutable sequence of characters.
- * A string buffer is like a {@link String}, but can be modified. At any
- * point in time it contains some particular sequence of characters, but
- * the length and content of the sequence can be changed through certain
- * method calls.
- * <p>
- * String buffers are safe for use by multiple threads. The methods
- * are synchronized where necessary so that all the operations on any
- * particular instance behave as if they occur in some serial order
- * that is consistent with the order of the method calls made by each of
- * the individual threads involved.
- * <p>
- * The principal operations on a {@code StringBuffer} are the
- * {@code append} and {@code insert} methods, which are
- * overloaded so as to accept data of any type. Each effectively
- * converts a given datum to a string and then appends or inserts the
- * characters of that string to the string buffer. The
- * {@code append} method always adds these characters at the end
- * of the buffer; the {@code insert} method adds the characters at
- * a specified point.
- * <p>
- * For example, if {@code z} refers to a string buffer object
- * whose current contents are {@code "start"}, then
- * the method call {@code z.append("le")} would cause the string
- * buffer to contain {@code "startle"}, whereas
- * {@code z.insert(4, "le")} would alter the string buffer to
- * contain {@code "starlet"}.
- * <p>
- * In general, if sb refers to an instance of a {@code StringBuffer},
- * then {@code sb.append(x)} has the same effect as
- * {@code sb.insert(sb.length(), x)}.
- * <p>
- * Whenever an operation occurs involving a source sequence (such as
- * appending or inserting from a source sequence), this class synchronizes
- * only on the string buffer performing the operation, not on the source.
- * Note that while {@code StringBuffer} is designed to be safe to use
- * concurrently from multiple threads, if the constructor or the
- * {@code append} or {@code insert} operation is passed a source sequence
- * that is shared across threads, the calling code must ensure
- * that the operation has a consistent and unchanging view of the source
- * sequence for the duration of the operation.
- * This could be satisfied by the caller holding a lock during the
- * operation's call, by using an immutable source sequence, or by not
- * sharing the source sequence across threads.
- * <p>
- * Every string buffer has a capacity. As long as the length of the
- * character sequence contained in the string buffer does not exceed
- * the capacity, it is not necessary to allocate a new internal
- * buffer array. If the internal buffer overflows, it is
- * automatically made larger.
- * <p>
- * Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
- * <p>
- * As of  release JDK 5, this class has been supplemented with an equivalent
- * class designed for use by a single thread, {@link StringBuilder}.  The
- * {@code StringBuilder} class should generally be used in preference to
- * this one, as it supports all of the same operations but it is faster, as
- * it performs no synchronization.
+ * 常用方法含义速记：
+ *  StringBuffer append(boolean b)
  *
- * @author      Arthur van Hoff
- * @see     java.lang.StringBuilder
- * @see     java.lang.String
- * @since   JDK1.0
+ *  StringBuffer append(char c)
+ *
+ *  StringBuffer append(char[] str)
+ *
+ *  StringBuffer append(char[] str, int offset, int len)
+ *
+ *  StringBuffer append(CharSequence s)
+ *
+ *  StringBuffer append(CharSequence s, int start, int end)
+ *
+ *  StringBuffer append(double d)
+ *
+ *  StringBuffer append(float f)
+ *
+ *  StringBuffer append(int i)
+ *
+ *  StringBuffer append(long lng)
+ *
+ *  StringBuffer append(Object obj)
+ *
+ *  StringBuffer append(String str)
+ *
+ *  StringBuffer append(StringBuffer sb)
+ *
+ *  StringBuffer appendCodePoint(int codePoint)
+ *
+ *  int capacity()
+ *
+ *  char charAt(int index)
+ *
+ *  int codePointAt(int index)
+ *
+ *  int codePointBefore(int index)
+ *
+ *  int codePointCount(int beginIndex, int endIndex)
+ *
+ *  StringBuffer delete(int start, int end)
+ *
+ *  StringBuffer deleteCharAt(int index)
+ *
+ *  void ensureCapacity(int minimumCapacity)
+ *
+ *  void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+ *
+ *  int indexOf(String str)
+ *
+ *  int indexOf(String str, int fromIndex)
+ *
+ *  StringBuffer insert(int offset, boolean b)
+ *
+ *  StringBuffer insert(int offset, char c)
+ *
+ *  StringBuffer insert(int offset, char[] str)
+ *
+ *  StringBuffer insert(int index, char[] str, int offset, int len)
+ *
+ *  StringBuffer insert(int dstOffset, CharSequence s)
+ *
+ *  StringBuffer insert(int dstOffset, CharSequence s, int start, int end)
+ *
+ *  StringBuffer insert(int offset, double d)
+ *
+ *  StringBuffer insert(int offset, float f)
+ *
+ *  StringBuffer insert(int offset, int i)
+ *
+ *  StringBuffer insert(int offset, long l)
+ *
+ *  StringBuffer insert(int offset, Object obj)
+ *
+ *  StringBuffer insert(int offset, String str)
+ *
+ *  int lastIndexOf(String str)
+ *
+ *  int lastIndexOf(String str, int fromIndex)
+ *
+ *  int length()
+ *
+ *  int offsetByCodePoints(int index, int codePointOffset)
+ *
+ *  StringBuffer replace(int start, int end, String str)
+ *
+ *  StringBuffer reverse()
+ *
+ *  void setCharAt(int index, char ch)
+ *
+ *  void setLength(int newLength)
+ *
+ *  CharSequence subSequence(int start, int end)
+ *
+ *  String substring(int start)
+ *
+ *  String substring(int start, int end)
+ *
+ *  String toString()
+ *
+ *  void trimToSize()
+ */
+
+/**
+ * 相关问题：
+ *  -
  */
  public final class StringBuffer
     extends AbstractStringBuilder

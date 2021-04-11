@@ -39,44 +39,145 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * This class consists exclusively of static methods that operate on or return
- * collections.  It contains polymorphic algorithms that operate on
- * collections, "wrappers", which return a new collection backed by a
- * specified collection, and a few other odds and ends.
+ * 常用方法含义速记：
+ *  static <T> boolean addAll(Collection<? super T> c, T... elements)
  *
- * <p>The methods of this class all throw a <tt>NullPointerException</tt>
- * if the collections or class objects provided to them are null.
+ *  static <T> Queue<T> asLifoQueue(Deque<T> deque)
  *
- * <p>The documentation for the polymorphic algorithms contained in this class
- * generally includes a brief description of the <i>implementation</i>.  Such
- * descriptions should be regarded as <i>implementation notes</i>, rather than
- * parts of the <i>specification</i>.  Implementors should feel free to
- * substitute other algorithms, so long as the specification itself is adhered
- * to.  (For example, the algorithm used by <tt>sort</tt> does not have to be
- * a mergesort, but it does have to be <i>stable</i>.)
+ *  static <T> int binarySearch(List<? extends Comparable<? super T>> list, T key)
  *
- * <p>The "destructive" algorithms contained in this class, that is, the
- * algorithms that modify the collection on which they operate, are specified
- * to throw <tt>UnsupportedOperationException</tt> if the collection does not
- * support the appropriate mutation primitive(s), such as the <tt>set</tt>
- * method.  These algorithms may, but are not required to, throw this
- * exception if an invocation would have no effect on the collection.  For
- * example, invoking the <tt>sort</tt> method on an unmodifiable list that is
- * already sorted may or may not throw <tt>UnsupportedOperationException</tt>.
+ *  static <T> int binarySearch(List<? extends T> list, T key, Comparator<? super T> c)
  *
- * <p>This class is a member of the
- * <a href="{@docRoot}/../technotes/guides/collections/index.html">
- * Java Collections Framework</a>.
+ *  static <E> Collection<E> checkedCollection(Collection<E> c, Class<E> type)
  *
- * @author  Josh Bloch
- * @author  Neal Gafter
- * @see     Collection
- * @see     Set
- * @see     List
- * @see     Map
- * @since   1.2
+ *  static <E> List<E> checkedList(List<E> list, Class<E> type)
+ *
+ *  static <K,V> Map<K,V> checkedMap(Map<K,V> m, Class<K> keyType, Class<V> valueType)
+ *
+ *  static <K,V> NavigableMap<K,V> checkedNavigableMap(NavigableMap<K,V> m, Class<K> keyType, Class<V> valueType)
+ *
+ *  static <E> NavigableSet<E> checkedNavigableSet(NavigableSet<E> s, Class<E> type)
+ *
+ *  static <E> Queue<E> checkedQueue(Queue<E> queue, Class<E> type)
+ *
+ *  static <E> Set<E> checkedSet(Set<E> s, Class<E> type)
+ *
+ *  static <K,V> SortedMap<K,V> checkedSortedMap(SortedMap<K,V> m, Class<K> keyType, Class<V> valueType)
+ *
+ *  static <E> SortedSet<E> checkedSortedSet(SortedSet<E> s, Class<E> type)
+ *
+ *  static <T> void copy(List<? super T> dest, List<? extends T> src)
+ *
+ *  static boolean disjoint(Collection<?> c1, Collection<?> c2)
+ *
+ *  static <T> Enumeration<T> emptyEnumeration()
+ *
+ *  static <T> Iterator<T> emptyIterator()
+ *
+ *  static <T> List<T> emptyList()
+ *
+ *  static <T> ListIterator<T> emptyListIterator()
+ *
+ *  static <K,V> Map<K,V> emptyMap()
+ *
+ *  static <K,V> NavigableMap<K,V> emptyNavigableMap()
+ *
+ *  static <E> NavigableSet<E> emptyNavigableSet()
+ *
+ *  static <T> Set<T> emptySet()
+ *
+ *  static <K,V> SortedMap<K,V> emptySortedMap()
+ *
+ *  static <E> SortedSet<E> emptySortedSet()
+ *
+ *  static <T> Enumeration<T> enumeration(Collection<T> c)
+ *
+ *  static <T> void fill(List<? super T> list, T obj)
+ *
+ *  static int frequency(Collection<?> c, Object o)
+ *
+ *  static int indexOfSubList(List<?> source, List<?> target)
+ *
+ *  static int lastIndexOfSubList(List<?> source, List<?> target)
+ *
+ *  static <T> ArrayList<T> list(Enumeration<T> e)
+ *
+ *  static <T extends Object & Comparable<? super T>> T max(Collection<? extends T> coll)
+ *
+ *  static <T> T max(Collection<? extends T> coll, Comparator<? super T> comp)
+ *
+ *  static <T extends Object & Comparable<? super T>> T min(Collection<? extends T> coll)
+ *
+ *  static <T> T min(Collection<? extends T> coll, Comparator<? super T> comp)
+ *
+ *  static <T> List<T> nCopies(int n, T o)
+ *
+ *  static <E> Set<E> newSetFromMap(Map<E,Boolean> map)
+ *
+ *  static <T> boolean replaceAll(List<T> list, T oldVal, T newVal)
+ *
+ *  static void reverse(List<?> list)
+ *
+ *  static <T> Comparator<T> reverseOrder()
+ *
+ *  static <T> Comparator<T> reverseOrder(Comparator<T> cmp)
+ *
+ *  static void rotate(List<?> list, int distance)
+ *
+ *  static void shuffle(List<?> list)
+ *
+ *  static void shuffle(List<?> list, Random rnd)
+ *
+ *  static <T> Set<T> singleton(T o)
+ *
+ *  static <T> List<T> singletonList(T o)
+ *
+ *  static <K,V> Map<K,V> singletonMap(K key, V value)
+ *
+ *  static <T extends Comparable<? super T>> void sort(List<T> list)
+ *
+ *  static <T> void sort(List<T> list, Comparator<? super T> c)
+ *
+ *  static void swap(List<?> list, int i, int j)
+ *
+ *  static <T> Collection<T> synchronizedCollection(Collection<T> c)
+ *
+ *  static <T> List<T> synchronizedList(List<T> list)
+ *
+ *  static <K,V> Map<K,V> synchronizedMap(Map<K,V> m)
+ *
+ *  static <K,V> NavigableMap<K,V> synchronizedNavigableMap(NavigableMap<K,V> m)
+ *
+ *  static <T> NavigableSet<T> synchronizedNavigableSet(NavigableSet<T> s)
+ *
+ *  static <T> Set<T> synchronizedSet(Set<T> s)
+ *
+ *  static <K,V> SortedMap<K,V> synchronizedSortedMap(SortedMap<K,V> m)
+ *
+ *  static <T> SortedSet<T> synchronizedSortedSet(SortedSet<T> s)
+ *
+ *  static <T> Collection<T> unmodifiableCollection(Collection<? extends T> c)
+ *
+ *  static <T> List<T> unmodifiableList(List<? extends T> list)
+ *
+ *  static <K,V> Map<K,V> unmodifiableMap(Map<? extends K,? extends V> m)
+ *
+ *  static <K,V> NavigableMap<K,V> unmodifiableNavigableMap(NavigableMap<K,? extends V> m)
+ *
+ *  static <T> NavigableSet<T> unmodifiableNavigableSet(NavigableSet<T> s)
+ *
+ *  static <T> Set<T> unmodifiableSet(Set<? extends T> s)
+ *
+ *  static <K,V> SortedMap<K,V> unmodifiableSortedMap(SortedMap<K,? extends V> m)
+ *
+ *  static <T> SortedSet<T> unmodifiableSortedSet(SortedSet<T> s)
+ *
  */
 
+/**
+ * 相关问题：
+ *  -
+ */
 public class Collections {
     // Suppresses default constructor, ensuring non-instantiability.
     private Collections() {

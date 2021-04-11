@@ -31,93 +31,183 @@ import java.util.HashMap;
 import java.util.Locale;
 
 /**
- * The {@code Character} class wraps a value of the primitive
- * type {@code char} in an object. An object of type
- * {@code Character} contains a single field whose type is
- * {@code char}.
- * <p>
- * In addition, this class provides several methods for determining
- * a character's category (lowercase letter, digit, etc.) and for converting
- * characters from uppercase to lowercase and vice versa.
- * <p>
- * Character information is based on the Unicode Standard, version 6.2.0.
- * <p>
- * The methods and data of class {@code Character} are defined by
- * the information in the <i>UnicodeData</i> file that is part of the
- * Unicode Character Database maintained by the Unicode
- * Consortium. This file specifies various properties including name
- * and general category for every defined Unicode code point or
- * character range.
- * <p>
- * The file and its description are available from the Unicode Consortium at:
- * <ul>
- * <li><a href="http://www.unicode.org">http://www.unicode.org</a>
- * </ul>
+ * 常用方法含义速记：
+ *  static int charCount(int codePoint)
  *
- * <h3><a name="unicode">Unicode Character Representations</a></h3>
+ *  char charValue()
  *
- * <p>The {@code char} data type (and therefore the value that a
- * {@code Character} object encapsulates) are based on the
- * original Unicode specification, which defined characters as
- * fixed-width 16-bit entities. The Unicode Standard has since been
- * changed to allow for characters whose representation requires more
- * than 16 bits.  The range of legal <em>code point</em>s is now
- * U+0000 to U+10FFFF, known as <em>Unicode scalar value</em>.
- * (Refer to the <a
- * href="http://www.unicode.org/reports/tr27/#notation"><i>
- * definition</i></a> of the U+<i>n</i> notation in the Unicode
- * Standard.)
+ *  static int codePointAt(char[] a, int index)
  *
- * <p><a name="BMP">The set of characters from U+0000 to U+FFFF</a> is
- * sometimes referred to as the <em>Basic Multilingual Plane (BMP)</em>.
- * <a name="supplementary">Characters</a> whose code points are greater
- * than U+FFFF are called <em>supplementary character</em>s.  The Java
- * platform uses the UTF-16 representation in {@code char} arrays and
- * in the {@code String} and {@code StringBuffer} classes. In
- * this representation, supplementary characters are represented as a pair
- * of {@code char} values, the first from the <em>high-surrogates</em>
- * range, (&#92;uD800-&#92;uDBFF), the second from the
- * <em>low-surrogates</em> range (&#92;uDC00-&#92;uDFFF).
+ *  static int codePointAt(char[] a, int index, int limit)
  *
- * <p>A {@code char} value, therefore, represents Basic
- * Multilingual Plane (BMP) code points, including the surrogate
- * code points, or code units of the UTF-16 encoding. An
- * {@code int} value represents all Unicode code points,
- * including supplementary code points. The lower (least significant)
- * 21 bits of {@code int} are used to represent Unicode code
- * points and the upper (most significant) 11 bits must be zero.
- * Unless otherwise specified, the behavior with respect to
- * supplementary characters and surrogate {@code char} values is
- * as follows:
+ *  static int codePointAt(CharSequence seq, int index)
  *
- * <ul>
- * <li>The methods that only accept a {@code char} value cannot support
- * supplementary characters. They treat {@code char} values from the
- * surrogate ranges as undefined characters. For example,
- * {@code Character.isLetter('\u005CuD840')} returns {@code false}, even though
- * this specific value if followed by any low-surrogate value in a string
- * would represent a letter.
+ *  static int codePointBefore(char[] a, int index)
  *
- * <li>The methods that accept an {@code int} value support all
- * Unicode characters, including supplementary characters. For
- * example, {@code Character.isLetter(0x2F81A)} returns
- * {@code true} because the code point value represents a letter
- * (a CJK ideograph).
- * </ul>
+ *  static int codePointBefore(char[] a, int index, int start)
  *
- * <p>In the Java SE API documentation, <em>Unicode code point</em> is
- * used for character values in the range between U+0000 and U+10FFFF,
- * and <em>Unicode code unit</em> is used for 16-bit
- * {@code char} values that are code units of the <em>UTF-16</em>
- * encoding. For more information on Unicode terminology, refer to the
- * <a href="http://www.unicode.org/glossary/">Unicode Glossary</a>.
+ *  static int codePointBefore(CharSequence seq, int index)
  *
- * @author  Lee Boynton
- * @author  Guy Steele
- * @author  Akira Tanaka
- * @author  Martin Buchholz
- * @author  Ulf Zibis
- * @since   1.0
+ *  static int codePointCount(char[] a, int offset, int count)
+ *
+ *  static int codePointCount(CharSequence seq, int beginIndex, int endIndex)
+ *
+ *  static int compare(char x, char y)
+ *
+ *  int compareTo(Character anotherCharacter)
+ *
+ *  static int digit(char ch, int radix)
+ *
+ *  static int digit(int codePoint, int radix)
+ *
+ *  boolean equals(Object obj)
+ *
+ *  static char forDigit(int digit, int radix)
+ *
+ *  static byte getDirectionality(char ch)
+ *
+ *  static byte getDirectionality(int codePoint)
+ *
+ *  static String getName(int codePoint)
+ *
+ *  static int getNumericValue(char ch)
+ *
+ *  static int getNumericValue(int codePoint)
+ *
+ *  static int getType(char ch)
+ *
+ *  static int getType(int codePoint)
+ *
+ *  int hashCode()
+ *
+ *  static int hashCode(char value)
+ *
+ *  static char highSurrogate(int codePoint)
+ *
+ *  static boolean isAlphabetic(int codePoint)
+ *
+ *  static boolean isBmpCodePoint(int codePoint)
+ *
+ *  static boolean isDefined(char ch)
+ *
+ *  static boolean isDefined(int codePoint)
+ *
+ *  static boolean isDigit(char ch)
+ *
+ *  static boolean isDigit(int codePoint)
+ *
+ *  static boolean isHighSurrogate(char ch)
+ *
+ *  static boolean isIdentifierIgnorable(char ch)
+ *
+ *  static boolean isIdentifierIgnorable(int codePoint)
+ *
+ *  static boolean isIdeographic(int codePoint)
+ *
+ *  static boolean isISOControl(char ch)
+ *
+ *  static boolean isISOControl(int codePoint)
+ *
+ *  static boolean isJavaIdentifierPart(char ch)
+ *
+ *  static boolean isJavaIdentifierPart(int codePoint)
+ *
+ *  static boolean isJavaIdentifierStart(char ch)
+ *
+ *  static boolean isJavaIdentifierStart(int codePoint)
+ *
+ *  static boolean isJavaLetter(char ch)
+ *
+ *  static boolean isJavaLetterOrDigit(char ch)
+ *
+ *  static boolean isLetter(char ch)
+ *
+ *  static boolean isLetter(int codePoint)
+ *
+ *  static boolean isLetterOrDigit(char ch)
+ *
+ *  static boolean isLetterOrDigit(int codePoint)
+ *
+ *  static boolean isLowerCase(char ch)
+ *
+ *  static boolean isLowerCase(int codePoint)
+ *
+ *  static boolean isLowSurrogate(char ch)
+ *
+ *  static boolean isMirrored(char ch)
+ *
+ *  static boolean isMirrored(int codePoint)
+ *
+ *  static boolean isSpace(char ch)
+ *
+ *  static boolean isSpaceChar(char ch)
+ *
+ *  static boolean isSpaceChar(int codePoint)
+ *
+ *  static boolean isSupplementaryCodePoint(int codePoint)
+ *
+ *  static boolean isSurrogate(char ch)
+ *
+ *  static boolean isSurrogatePair(char high, char low)
+ *
+ *  static boolean isTitleCase(char ch)
+ *
+ *  static boolean isTitleCase(int codePoint)
+ *
+ *  static boolean isUnicodeIdentifierPart(char ch)
+ *
+ *  static boolean isUnicodeIdentifierPart(int codePoint)
+ *
+ *  static boolean isUnicodeIdentifierStart(char ch)
+ *
+ *  static boolean isUnicodeIdentifierStart(int codePoint)
+ *
+ *  static boolean isUpperCase(char ch)
+ *
+ *  static boolean isUpperCase(int codePoint)
+ *
+ *  static boolean isValidCodePoint(int codePoint)
+ *
+ *  static boolean isWhitespace(char ch)
+ *
+ *  static boolean isWhitespace(int codePoint)
+ *
+ *  static char lowSurrogate(int codePoint)
+ *
+ *  static int offsetByCodePoints(char[] a, int start, int count, int index, int codePointOffset)
+ *
+ *  static int offsetByCodePoints(CharSequence seq, int index, int codePointOffset)
+ *
+ *  static char reverseBytes(char ch)
+ *
+ *  static char[] toChars(int codePoint)
+ *
+ *  static int toChars(int codePoint, char[] dst, int dstIndex)
+ *
+ *  static int toCodePoint(char high, char low)
+ *
+ *  static char toLowerCase(char ch)
+ *
+ *  static int toLowerCase(int codePoint)
+ *
+ *  String toString()
+ *
+ *  static String toString(char c)
+ *
+ *  static char toTitleCase(char ch)
+ *
+ *  static int toTitleCase(int codePoint)
+ *
+ *  static char toUpperCase(char ch)
+ *
+ *  static int toUpperCase(int codePoint)
+ *
+ *  static Character valueOf(char c)
+ */
+
+/**
+ * 相关问题：
+ *  -
  */
 public final
 class Character implements java.io.Serializable, Comparable<Character> {

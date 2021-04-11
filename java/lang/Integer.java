@@ -28,26 +28,106 @@ package java.lang;
 import java.lang.annotation.Native;
 
 /**
- * The {@code Integer} class wraps a value of the primitive type
- * {@code int} in an object. An object of type {@code Integer}
- * contains a single field whose type is {@code int}.
+ * 常用方法含义速记：
+ *  static int bitCount(int i)
  *
- * <p>In addition, this class provides several methods for converting
- * an {@code int} to a {@code String} and a {@code String} to an
- * {@code int}, as well as other constants and methods useful when
- * dealing with an {@code int}.
+ *  byte byteValue()
  *
- * <p>Implementation note: The implementations of the "bit twiddling"
- * methods (such as {@link #highestOneBit(int) highestOneBit} and
- * {@link #numberOfTrailingZeros(int) numberOfTrailingZeros}) are
- * based on material from Henry S. Warren, Jr.'s <i>Hacker's
- * Delight</i>, (Addison Wesley, 2002).
+ *  static int compare(int x, int y)
  *
- * @author  Lee Boynton
- * @author  Arthur van Hoff
- * @author  Josh Bloch
- * @author  Joseph D. Darcy
- * @since JDK1.0
+ *  int compareTo(Integer anotherInteger)
+ *
+ *  static int compareUnsigned(int x, int y)
+ *
+ *  static Integer decode(String nm)
+ *
+ *  static int divideUnsigned(int dividend, int divisor)
+ *
+ *  double doubleValue()
+ *
+ *  boolean equals(Object obj)
+ *
+ *  float floatValue()
+ *
+ *  static Integer getInteger(String nm)
+ *
+ *  static Integer getInteger(String nm, int val)
+ *
+ *  static Integer getInteger(String nm, Integer val)
+ *
+ *  int hashCode()
+ *
+ *  static int hashCode(int value)
+ *
+ *  static int highestOneBit(int i)
+ *
+ *  int intValue()
+ *
+ *  long longValue()
+ *
+ *  static int lowestOneBit(int i)
+ *
+ *  static int max(int a, int b)
+ *
+ *  static int min(int a, int b)
+ *
+ *  static int numberOfLeadingZeros(int i)
+ *
+ *  static int numberOfTrailingZeros(int i)
+ *
+ *  static int parseInt(String s)
+ *
+ *  static int parseInt(String s, int radix)
+ *
+ *  static int parseUnsignedInt(String s)
+ *
+ *  static int parseUnsignedInt(String s, int radix)
+ *
+ *  static int remainderUnsigned(int dividend, int divisor)
+ *
+ *  static int reverse(int i)
+ *
+ *  static int reverseBytes(int i)
+ *
+ *  static int rotateLeft(int i, int distance)
+ *
+ *  static int rotateRight(int i, int distance)
+ *
+ *  short shortValue()
+ *
+ *  static int signum(int i)
+ *
+ *  static int sum(int a, int b)
+ *
+ *  static String toBinaryString(int i)
+ *
+ *  static String toHexString(int i)
+ *
+ *  static String toOctalString(int i)
+ *
+ *  String toString()
+ *
+ *  static String toString(int i)
+ *
+ *  static String toString(int i, int radix)
+ *
+ *  static long toUnsignedLong(int x)
+ *
+ *  static String toUnsignedString(int i)
+ *
+ *  static String toUnsignedString(int i, int radix)
+ *
+ *  static Integer valueOf(int i)
+ *
+ *  static Integer valueOf(String s)
+ *
+ *  static Integer valueOf(String s, int radix)
+ *
+ */
+
+/**
+ * 相关问题：
+ *  -
  */
 public final class Integer extends Number implements Comparable<Integer> {
     /**

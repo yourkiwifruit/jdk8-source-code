@@ -27,51 +27,111 @@ package java.lang;
 
 
 /**
- * A mutable sequence of characters.  This class provides an API compatible
- * with {@code StringBuffer}, but with no guarantee of synchronization.
- * This class is designed for use as a drop-in replacement for
- * {@code StringBuffer} in places where the string buffer was being
- * used by a single thread (as is generally the case).   Where possible,
- * it is recommended that this class be used in preference to
- * {@code StringBuffer} as it will be faster under most implementations.
+ * 常用方法含义速记：
+ *  StringBuilder append(boolean b)
  *
- * <p>The principal operations on a {@code StringBuilder} are the
- * {@code append} and {@code insert} methods, which are
- * overloaded so as to accept data of any type. Each effectively
- * converts a given datum to a string and then appends or inserts the
- * characters of that string to the string builder. The
- * {@code append} method always adds these characters at the end
- * of the builder; the {@code insert} method adds the characters at
- * a specified point.
- * <p>
- * For example, if {@code z} refers to a string builder object
- * whose current contents are "{@code start}", then
- * the method call {@code z.append("le")} would cause the string
- * builder to contain "{@code startle}", whereas
- * {@code z.insert(4, "le")} would alter the string builder to
- * contain "{@code starlet}".
- * <p>
- * In general, if sb refers to an instance of a {@code StringBuilder},
- * then {@code sb.append(x)} has the same effect as
- * {@code sb.insert(sb.length(), x)}.
- * <p>
- * Every string builder has a capacity. As long as the length of the
- * character sequence contained in the string builder does not exceed
- * the capacity, it is not necessary to allocate a new internal
- * buffer. If the internal buffer overflows, it is automatically made larger.
+ *  StringBuilder append(char c)
  *
- * <p>Instances of {@code StringBuilder} are not safe for
- * use by multiple threads. If such synchronization is required then it is
- * recommended that {@link java.lang.StringBuffer} be used.
+ *  StringBuilder append(char[] str)
  *
- * <p>Unless otherwise noted, passing a {@code null} argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
+ *  StringBuilder append(char[] str, int offset, int len)
  *
- * @author      Michael McCloskey
- * @see         java.lang.StringBuffer
- * @see         java.lang.String
- * @since       1.5
+ *  StringBuilder append(CharSequence s)
+ *
+ *  StringBuilder append(CharSequence s, int start, int end)
+ *
+ *  StringBuilder append(double d)
+ *
+ *  StringBuilder append(float f)
+ *
+ *  StringBuilder append(int i)
+ *
+ *  StringBuilder append(long lng)
+ *
+ *  StringBuilder append(Object obj)
+ *
+ *  StringBuilder append(String str)
+ *
+ *  StringBuilder append(StringBuffer sb)
+ *
+ *  StringBuilder appendCodePoint(int codePoint)
+ *
+ *  int capacity()
+ *
+ *  char charAt(int index)
+ *
+ *  int codePointAt(int index)
+ *
+ *  int codePointBefore(int index)
+ *
+ *  int codePointCount(int beginIndex, int endIndex)
+ *
+ *  StringBuilder delete(int start, int end)
+ *
+ *  StringBuilder deleteCharAt(int index)
+ *
+ *  void ensureCapacity(int minimumCapacity)
+ *
+ *  void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+ *
+ *  int indexOf(String str)
+ *
+ *  int indexOf(String str, int fromIndex)
+ *
+ *  StringBuilder insert(int offset, boolean b)
+ *
+ *  StringBuilder insert(int offset, char c)
+ *
+ *  StringBuilder insert(int offset, char[] str)
+ *
+ *  StringBuilder insert(int index, char[] str, int offset, int len)
+ *
+ *  StringBuilder insert(int dstOffset, CharSequence s)
+ *
+ *  StringBuilder insert(int dstOffset, CharSequence s, int start, int end)
+ *
+ *  StringBuilder insert(int offset, double d)
+ *
+ *  StringBuilder insert(int offset, float f)
+ *
+ *  StringBuilder insert(int offset, int i)
+ *
+ *  StringBuilder insert(int offset, long l)
+ *
+ *  StringBuilder insert(int offset, Object obj)
+ *
+ *  StringBuilder insert(int offset, String str)
+ *
+ *  int lastIndexOf(String str)
+ *
+ *  int lastIndexOf(String str, int fromIndex)
+ *
+ *  int length()
+ *
+ *  int offsetByCodePoints(int index, int codePointOffset)
+ *
+ *  StringBuilder replace(int start, int end, String str)
+ *
+ *  StringBuilder reverse()
+ *
+ *  void setCharAt(int index, char ch)
+ *
+ *  void setLength(int newLength)
+ *
+ *  CharSequence subSequence(int start, int end)
+ *
+ *  String substring(int start)
+ *
+ *  String substring(int start, int end)
+ *
+ *  String toString()
+ *
+ *  void trimToSize()
+ */
+
+/**
+ * 相关问题：
+ *  -
  */
 public final class StringBuilder
     extends AbstractStringBuilder

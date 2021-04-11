@@ -30,21 +30,68 @@ import sun.misc.FpUtils;
 import sun.misc.DoubleConsts;
 
 /**
- * The {@code Double} class wraps a value of the primitive type
- * {@code double} in an object. An object of type
- * {@code Double} contains a single field whose type is
- * {@code double}.
+ * 常用方法含义速记：
+ *  byte byteValue()
  *
- * <p>In addition, this class provides several methods for converting a
- * {@code double} to a {@code String} and a
- * {@code String} to a {@code double}, as well as other
- * constants and methods useful when dealing with a
- * {@code double}.
+ *  static int compare(double d1, double d2)
  *
- * @author  Lee Boynton
- * @author  Arthur van Hoff
- * @author  Joseph D. Darcy
- * @since JDK1.0
+ *  int compareTo(Double anotherDouble)
+ *
+ *  static long doubleToLongBits(double value)
+ *
+ *  static long doubleToRawLongBits(double value)
+ *
+ *  double doubleValue()
+ *
+ *  boolean equals(Object obj)
+ *
+ *  float floatValue()
+ *
+ *  int hashCode()
+ *
+ *  static int hashCode(double value)
+ *
+ *  int intValue()
+ *
+ *  static boolean isFinite(double d)
+ *
+ *  boolean isInfinite()
+ *
+ *  static boolean isInfinite(double v)
+ *
+ *  boolean isNaN()
+ *
+ *  static boolean isNaN(double v)
+ *
+ *  static double longBitsToDouble(long bits)
+ *
+ *  long longValue()
+ *
+ *  static double max(double a, double b)
+ *
+ *  static double min(double a, double b)
+ *
+ *  static double parseDouble(String s)
+ *
+ *  short shortValue()
+ *
+ *  static double sum(double a, double b)
+ *
+ *  static String toHexString(double d)
+ *
+ *  String toString()
+ *
+ *  static String toString(double d)
+ *
+ *  static Double valueOf(double d)
+ *
+ *  static Double valueOf(String s)
+ *
+ */
+
+/**
+ * 相关问题：
+ *  -
  */
 public final class Double extends Number implements Comparable<Double> {
     /**

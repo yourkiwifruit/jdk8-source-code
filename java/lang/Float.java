@@ -30,21 +30,67 @@ import sun.misc.FloatConsts;
 import sun.misc.DoubleConsts;
 
 /**
- * The {@code Float} class wraps a value of primitive type
- * {@code float} in an object. An object of type
- * {@code Float} contains a single field whose type is
- * {@code float}.
+ * 常用方法含义速记：
+ *  byte byteValue()
  *
- * <p>In addition, this class provides several methods for converting a
- * {@code float} to a {@code String} and a
- * {@code String} to a {@code float}, as well as other
- * constants and methods useful when dealing with a
- * {@code float}.
+ *  static int compare(float f1, float f2)
  *
- * @author  Lee Boynton
- * @author  Arthur van Hoff
- * @author  Joseph D. Darcy
- * @since JDK1.0
+ *  int compareTo(Float anotherFloat)
+ *
+ *  double doubleValue()
+ *
+ *  boolean equals(Object obj)
+ *
+ *  static int floatToIntBits(float value)
+ *
+ *  static int floatToRawIntBits(float value)
+ *
+ *  float floatValue()
+ *
+ *  int hashCode()
+ *
+ *  static int hashCode(float value)
+ *
+ *  static float intBitsToFloat(int bits)
+ *
+ *  int intValue()
+ *
+ *  static boolean isFinite(float f)
+ *
+ *  boolean isInfinite()
+ *
+ *  static boolean isInfinite(float v)
+ *
+ *  boolean isNaN()
+ *
+ *  static boolean isNaN(float v)
+ *
+ *  long longValue()
+ *
+ *  static float max(float a, float b)
+ *
+ *  static float min(float a, float b)
+ *
+ *  static float parseFloat(String s)
+ *
+ *  short shortValue()
+ *
+ *  static float sum(float a, float b)
+ *
+ *  static String toHexString(float f)
+ *
+ *  String toString()
+ *
+ *  static String toString(float f)
+ *
+ *  static Float valueOf(float f)
+ *
+ *  static Float valueOf(String s)
+ */
+
+/**
+ * 相关问题：
+ *  -
  */
 public final class Float extends Number implements Comparable<Float> {
     /**

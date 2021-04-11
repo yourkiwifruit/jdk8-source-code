@@ -40,74 +40,146 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 /**
- * The {@code String} class represents character strings. All
- * string literals in Java programs, such as {@code "abc"}, are
- * implemented as instances of this class.
- * <p>
- * Strings are constant; their values cannot be changed after they
- * are created. String buffers support mutable strings.
- * Because String objects are immutable they can be shared. For example:
- * <blockquote><pre>
- *     String str = "abc";
- * </pre></blockquote><p>
- * is equivalent to:
- * <blockquote><pre>
- *     char data[] = {'a', 'b', 'c'};
- *     String str = new String(data);
- * </pre></blockquote><p>
- * Here are some more examples of how strings can be used:
- * <blockquote><pre>
- *     System.out.println("abc");
- *     String cde = "cde";
- *     System.out.println("abc" + cde);
- *     String c = "abc".substring(2,3);
- *     String d = cde.substring(1, 2);
- * </pre></blockquote>
- * <p>
- * The class {@code String} includes methods for examining
- * individual characters of the sequence, for comparing strings, for
- * searching strings, for extracting substrings, and for creating a
- * copy of a string with all characters translated to uppercase or to
- * lowercase. Case mapping is based on the Unicode Standard version
- * specified by the {@link java.lang.Character Character} class.
- * <p>
- * The Java language provides special support for the string
- * concatenation operator (&nbsp;+&nbsp;), and for conversion of
- * other objects to strings. String concatenation is implemented
- * through the {@code StringBuilder}(or {@code StringBuffer})
- * class and its {@code append} method.
- * String conversions are implemented through the method
- * {@code toString}, defined by {@code Object} and
- * inherited by all classes in Java. For additional information on
- * string concatenation and conversion, see Gosling, Joy, and Steele,
- * <i>The Java Language Specification</i>.
+ * 常用方法含义速记：
+ *  char charAt(int index)
  *
- * <p> Unless otherwise noted, passing a <tt>null</tt> argument to a constructor
- * or method in this class will cause a {@link NullPointerException} to be
- * thrown.
+ *  int codePointAt(int index)
  *
- * <p>A {@code String} represents a string in the UTF-16 format
- * in which <em>supplementary characters</em> are represented by <em>surrogate
- * pairs</em> (see the section <a href="Character.html#unicode">Unicode
- * Character Representations</a> in the {@code Character} class for
- * more information).
- * Index values refer to {@code char} code units, so a supplementary
- * character uses two positions in a {@code String}.
- * <p>The {@code String} class provides methods for dealing with
- * Unicode code points (i.e., characters), in addition to those for
- * dealing with Unicode code units (i.e., {@code char} values).
+ *  int codePointBefore(int index)
  *
- * @author  Lee Boynton
- * @author  Arthur van Hoff
- * @author  Martin Buchholz
- * @author  Ulf Zibis
- * @see     java.lang.Object#toString()
- * @see     java.lang.StringBuffer
- * @see     java.lang.StringBuilder
- * @see     java.nio.charset.Charset
- * @since   JDK1.0
+ *  int codePointCount(int beginIndex, int endIndex)
+ *
+ *  int compareTo(String anotherString)
+ *
+ *  int compareToIgnoreCase(String str)
+ *
+ *  String concat(String str)
+ *
+ *  boolean contains(CharSequence s)
+ *
+ *  boolean contentEquals(CharSequence cs)
+ *
+ *  boolean contentEquals(StringBuffer sb)
+ *
+ *  static String copyValueOf(char[] data)
+ *
+ *  static String copyValueOf(char[] data, int offset, int count)
+ *
+ *  boolean endsWith(String suffix)
+ *
+ *  boolean equals(Object anObject)
+ *
+ *  boolean equalsIgnoreCase(String anotherString)
+ *
+ *  static String format(Locale l, String format, Object... args)
+ *
+ *  static String format(String format, Object... args)
+ *
+ *  byte[] getBytes()
+ *
+ *  byte[] getBytes(Charset charset)
+ *
+ *  void getBytes(int srcBegin, int srcEnd, byte[] dst, int dstBegin)
+ *
+ *  byte[] getBytes(String charsetName)
+ *
+ *  void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
+ *
+ *  int hashCode()
+ *
+ *  int indexOf(int ch)
+ *
+ *  int indexOf(int ch, int fromIndex)
+ *
+ *  int indexOf(String str)
+ *
+ *  int indexOf(String str, int fromIndex)
+ *
+ *  String intern()
+ *
+ *  boolean isEmpty()
+ *
+ *  static String join(CharSequence delimiter, CharSequence... elements)
+ *
+ *  static String join(CharSequence delimiter, Iterable<? extends CharSequence> elements)
+ *
+ *  int lastIndexOf(int ch)
+ *
+ *  int lastIndexOf(int ch, int fromIndex)
+ *
+ *  int lastIndexOf(String str)
+ *
+ *  int lastIndexOf(String str, int fromIndex)
+ *
+ *  int length()
+ *
+ *  boolean matches(String regex)
+ *
+ *  int offsetByCodePoints(int index, int codePointOffset)
+ *
+ *  boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)
+ *
+ *  boolean regionMatches(int toffset, String other, int ooffset, int len)
+ *
+ *  String replace(char oldChar, char newChar)
+ *
+ *  String replace(CharSequence target, CharSequence replacement)
+ *
+ *  String replaceAll(String regex, String replacement)
+ *
+ *  String replaceFirst(String regex, String replacement)
+ *
+ *  String[] split(String regex)
+ *
+ *  String[] split(String regex, int limit)
+ *
+ *  boolean startsWith(String prefix)
+ *
+ *  boolean startsWith(String prefix, int toffset)
+ *
+ *  CharSequence subSequence(int beginIndex, int endIndex)
+ *
+ *  String substring(int beginIndex)
+ *
+ *  String substring(int beginIndex, int endIndex)
+ *
+ *  char[] toCharArray()
+ *
+ *  String toLowerCase()
+ *
+ *  String toLowerCase(Locale locale)
+ *
+ *  String toString()
+ *
+ *  String toUpperCase()
+ *
+ *  String toUpperCase(Locale locale)
+ *
+ *  String trim()
+ *
+ *  static String valueOf(boolean b)
+ *
+ *  static String valueOf(char c)
+ *
+ *  static String valueOf(char[] data)
+ *
+ *  static String valueOf(char[] data, int offset, int count)
+ *
+ *  static String valueOf(double d)
+ *
+ *  static String valueOf(float f)
+ *
+ *  static String valueOf(int i)
+ *
+ *  static String valueOf(long l)
+ *
+ *  static String valueOf(Object obj)
  */
 
+/**
+ * 相关问题：
+ *  -
+ */
 public final class String
     implements java.io.Serializable, Comparable<String>, CharSequence {
     /** The value is used for character storage. */

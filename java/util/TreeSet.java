@@ -26,69 +26,83 @@
 package java.util;
 
 /**
- * A {@link NavigableSet} implementation based on a {@link TreeMap}.
- * The elements are ordered using their {@linkplain Comparable natural
- * ordering}, or by a {@link Comparator} provided at set creation
- * time, depending on which constructor is used.
+ * 常用方法含义速记：
+ *  boolean add(E e)
  *
- * <p>This implementation provides guaranteed log(n) time cost for the basic
- * operations ({@code add}, {@code remove} and {@code contains}).
+ *  boolean addAll(Collection<? extends E> c)
  *
- * <p>Note that the ordering maintained by a set (whether or not an explicit
- * comparator is provided) must be <i>consistent with equals</i> if it is to
- * correctly implement the {@code Set} interface.  (See {@code Comparable}
- * or {@code Comparator} for a precise definition of <i>consistent with
- * equals</i>.)  This is so because the {@code Set} interface is defined in
- * terms of the {@code equals} operation, but a {@code TreeSet} instance
- * performs all element comparisons using its {@code compareTo} (or
- * {@code compare}) method, so two elements that are deemed equal by this method
- * are, from the standpoint of the set, equal.  The behavior of a set
- * <i>is</i> well-defined even if its ordering is inconsistent with equals; it
- * just fails to obey the general contract of the {@code Set} interface.
+ *  E ceiling(E e)
  *
- * <p><strong>Note that this implementation is not synchronized.</strong>
- * If multiple threads access a tree set concurrently, and at least one
- * of the threads modifies the set, it <i>must</i> be synchronized
- * externally.  This is typically accomplished by synchronizing on some
- * object that naturally encapsulates the set.
- * If no such object exists, the set should be "wrapped" using the
- * {@link Collections#synchronizedSortedSet Collections.synchronizedSortedSet}
- * method.  This is best done at creation time, to prevent accidental
- * unsynchronized access to the set: <pre>
- *   SortedSet s = Collections.synchronizedSortedSet(new TreeSet(...));</pre>
+ *  void clear()
  *
- * <p>The iterators returned by this class's {@code iterator} method are
- * <i>fail-fast</i>: if the set is modified at any time after the iterator is
- * created, in any way except through the iterator's own {@code remove}
- * method, the iterator will throw a {@link ConcurrentModificationException}.
- * Thus, in the face of concurrent modification, the iterator fails quickly
- * and cleanly, rather than risking arbitrary, non-deterministic behavior at
- * an undetermined time in the future.
+ *  Object clone()
  *
- * <p>Note that the fail-fast behavior of an iterator cannot be guaranteed
- * as it is, generally speaking, impossible to make any hard guarantees in the
- * presence of unsynchronized concurrent modification.  Fail-fast iterators
- * throw {@code ConcurrentModificationException} on a best-effort basis.
- * Therefore, it would be wrong to write a program that depended on this
- * exception for its correctness:   <i>the fail-fast behavior of iterators
- * should be used only to detect bugs.</i>
+ *  Comparator<? super E> comparator()
  *
- * <p>This class is a member of the
- * <a href="{@docRoot}/../technotes/guides/collections/index.html">
- * Java Collections Framework</a>.
+ *  boolean contains(Object o)
  *
- * @param <E> the type of elements maintained by this set
+ *  Iterator<E> descendingIterator()
  *
- * @author  Josh Bloch
- * @see     Collection
- * @see     Set
- * @see     HashSet
- * @see     Comparable
- * @see     Comparator
- * @see     TreeMap
- * @since   1.2
+ *  NavigableSet<E> descendingSet()
+ *
+ *  E first()
+ *
+ *  E floor(E e)
+ *
+ *  SortedSet<E> headSet(E toElement)
+ *
+ *  NavigableSet<E> headSet(E toElement, boolean inclusive)
+ *
+ *  E higher(E e)
+ *
+ *  boolean isEmpty()
+ *
+ *  Iterator<E> iterator()
+ *
+ *  E last()
+ *
+ *  E lower(E e)
+ *
+ *  E pollFirst()
+ *
+ *  E pollLast()
+ *
+ *  boolean remove(Object o)
+ *
+ *  int size()
+ *
+ *  Spliterator<E> spliterator()
+ *
+ *  NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)
+ *
+ *  SortedSet<E> subSet(E fromElement, E toElement)
+ *
+ *  SortedSet<E> tailSet(E fromElement)
+ *
+ *  NavigableSet<E> tailSet(E fromElement, boolean inclusive)
+ *
+ *
+ *  以下方法继承于interface java.util.Set
+ *  containsAll, equals, hashCode, removeAll, retainAll, toArray, toArray
+ *
+ *  以下方法继承于java.util.AbstractCollection
+ *  containsAll, retainAll, toArray, toArray, toString
+ *
+ *  以下方法继承于java.util.AbstractSet
+ *  equals, hashCode, removeAll
+ *
+ *  以下方法继承于java.util.Collection
+ *  parallelStream, removeIf, stream
+ *
+ *  以下方法继承于java.lang.Iterable
+ *  forEach
+ *
  */
 
+/**
+ * 相关问题：
+ *  -
+ */
 public class TreeSet<E> extends AbstractSet<E>
     implements NavigableSet<E>, Cloneable, java.io.Serializable
 {

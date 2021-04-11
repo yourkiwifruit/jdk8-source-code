@@ -25,11 +25,11 @@
 
 package java.util;
 
-import java.io.*;
-import java.util.concurrent.ThreadLocalRandom;
+import java.io.IOException;
+import java.io.StreamCorruptedException;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
  * 常用方法含义速记：
