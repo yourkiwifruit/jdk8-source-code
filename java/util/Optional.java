@@ -30,22 +30,38 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
- * A container object which may or may not contain a non-null value.
- * If a value is present, {@code isPresent()} will return {@code true} and
- * {@code get()} will return the value.
+ * 常用方法含义速记：
+ * static <T> Optional<T> empty() 返回一个空的 Optional实例。
  *
- * <p>Additional methods that depend on the presence or absence of a contained
- * value are provided, such as {@link #orElse(java.lang.Object) orElse()}
- * (return a default value if value not present) and
- * {@link #ifPresent(java.util.function.Consumer) ifPresent()} (execute a block
- * of code if the value is present).
+ * boolean equals(Object obj) 指示某个其他对象是否等于此可选项。
  *
- * <p>This is a <a href="../lang/doc-files/ValueBased.html">value-based</a>
- * class; use of identity-sensitive operations (including reference equality
- * ({@code ==}), identity hash code, or synchronization) on instances of
- * {@code Optional} may have unpredictable results and should be avoided.
+ * Optional<T> filter(Predicate<? super T> predicate)
+ * 如果一个值存在，并且该值给定的谓词相匹配时，返回一个 Optional描述的值，否则返回一个空的 Optional 。
  *
- * @since 1.8
+ * <U> Optional<U> flatMap(Function<? super T,Optional<U>> mapper)
+ * 如果一个值存在，应用提供的 Optional映射函数给它，返回该结果，否则返回一个空的 Optional 。
+ *
+ * T get()
+ *
+ * int hashCode()
+ *
+ * void ifPresent(Consumer<? super T> consumer)
+ *
+ * boolean isPresent()
+ *
+ * <U> Optional<U> map(Function<? super T,? extends U> mapper)
+ *
+ * static <T> Optional<T> of(T value)
+ *
+ * static <T> Optional<T> ofNullable(T value)
+ *
+ * T orElse(T other)
+ *
+ * T orElseGet(Supplier<? extends T> other)
+ *
+ * <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier)
+ *
+ * String toString()
  */
 public final class Optional<T> {
     /**
