@@ -28,12 +28,30 @@ package java.util;
 import java.util.function.Supplier;
 
 /**
- * This class consists of {@code static} utility methods for operating
- * on objects.  These utilities include {@code null}-safe or {@code
- * null}-tolerant methods for computing the hash code of an object,
- * returning a string for an object, and comparing two objects.
+ * 常用方法含义速记：
+ * static <T> int compare(T a, T b, Comparator<? super T> c) 返回0，如果参数都是相同的， c.compare(a, b)其他。
  *
- * @since 1.7
+ * static boolean deepEquals(Object a, Object b) 返回 true如果参数是深层相等，彼此 false其他。
+ *
+ * static boolean equals(Object a, Object b) 返回 true如果参数相等，彼此 false其他。
+ *
+ * static int hash(Object... values) 为输入值序列生成哈希码。
+ *
+ * static int hashCode(Object o) 返回非的哈希码 null参数，0为 null参数。
+ *
+ * static boolean isNull(Object obj) 返回 true如果提供的引用是 null否则返回 false 。
+ *
+ * static boolean nonNull(Object obj) 如果提供的是非null，返回true
+ *
+ * static <T> T	requireNonNull(T obj) 检查指定的对象引用不是 null 。
+ *
+ * static <T> T	requireNonNull(T obj, String message) 检查指定的对象引用不是null并抛出自定义的NullPointerException（如果是）。
+ *
+ * static <T> T	requireNonNull(T obj, Supplier<String> messageSupplier) 检查指定的对象引用不是null并抛出一个自定义的NullPointerException（如果是）。
+ *
+ * static <T> T	requireNonNull(T obj, Supplier<String> messageSupplier) 返回非 null参数调用 toString和 "null"参数的 "null"的 null 。
+ *
+ * static String toString(Object o, String nullDefault) 如果第一个参数不是 null ，则返回第一个参数调用 toString的结果， toString返回第二个参数。
  */
 public final class Objects {
     private Objects() {

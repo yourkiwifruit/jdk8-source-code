@@ -41,27 +41,27 @@ import java.util.function.Supplier;
  * <U> Optional<U> flatMap(Function<? super T,Optional<U>> mapper)
  * 如果一个值存在，应用提供的 Optional映射函数给它，返回该结果，否则返回一个空的 Optional 。
  *
- * T get()
+ * T get() 如果 Optional中有一个值，返回值，否则抛出 NoSuchElementException 。
  *
- * int hashCode()
+ * int hashCode() 返回当前值的哈希码值（如果有的话），如果没有值，则返回0（零）。
  *
- * void ifPresent(Consumer<? super T> consumer)
+ * void ifPresent(Consumer<? super T> consumer) 如果存在值，则使用该值调用指定的消费者，否则不执行任何操作。
  *
- * boolean isPresent()
+ * boolean isPresent() 返回 true如果存在值，否则为 false 。
  *
- * <U> Optional<U> map(Function<? super T,? extends U> mapper)
+ * <U> Optional<U> map(Function<? super T,? extends U> mapper) 如果存在一个值，则应用提供的映射函数，如果结果不为空，则返回一个 Optional结果的 Optional 。
  *
- * static <T> Optional<T> of(T value)
+ * static <T> Optional<T> of(T value) 返回具有 Optional的当前非空值的Optional。
  *
- * static <T> Optional<T> ofNullable(T value)
+ * static <T> Optional<T> ofNullable(T value) 返回一个 Optional指定值的Optional，如果非空，则返回一个空的 Optional 。
  *
- * T orElse(T other)
+ * T orElse(T other) 返回值如果存在，否则返回 other 。
  *
- * T orElseGet(Supplier<? extends T> other)
+ * T orElseGet(Supplier<? extends T> other) 返回值（如果存在），否则调用 other并返回该调用的结果。
  *
- * <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier)
+ * <X extends Throwable> T orElseThrow(Supplier<? extends X> exceptionSupplier) 返回包含的值（如果存在），否则抛出由提供的供应商创建的异常。
  *
- * String toString()
+ * String toString() 返回此可选的非空字符串表示，适用于调试。
  */
 public final class Optional<T> {
     /**
