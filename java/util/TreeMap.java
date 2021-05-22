@@ -32,85 +32,85 @@ import java.util.function.Consumer;
 
 /**
  * 常用方法含义速记：
- *  Map.Entry<K,V> ceilingEntry(K key)
+ *  Map.Entry<K,V> ceilingEntry(K key) 返回具有最小键值（大于或等于指定键）的键值对，如果没有这样的键，则返回null。
  *
- *  K ceilingKey(K key)
+ *  K ceilingKey(K key) 返回最小键，大于指定键；如果没有这样的键，则返回null。
  *
- *  void clear()
+ *  void clear() 删除Map的所有键值对。
  *
- *  Object clone()
+ *  Object clone() 返回此 TreeMap实例的浅拷贝。
  *
- *  Comparator<? super K> comparator()
+ *  Comparator<? super K> comparator() 返回按顺序排列键的比较器；如果映射使用自然顺序，则返回null。
  *
- *  boolean containsKey(Object key)
+ *  boolean containsKey(Object key) 如果此映射包含指定键的映射，则返回 true 。
  *
- *  boolean containsValue(Object value)
+ *  boolean containsValue(Object value) 如果此TreeMap将一个或多个键映射到指定值，则返回 true 。
  *
- *  NavigableSet<K> descendingKeySet()
+ *  NavigableSet<K> descendingkeyset() 返回Map中所有key的逆序NavigableSet集合。
  *
- *  NavigableMap<K,V> descendingMap()
+ *  NavigableMap<K,V> descendingMap() 以降序返回指定的键值对。
  *
- *  Set<Map.Entry<K,V>> entrySet()
+ *  Set<Map.Entry<K,V>> entrySet() 返回此地图中包含的映射的Set视图。
  *
- *  Map.Entry<K,V> firstEntry()
+ *  Map.Entry<K,V> firstEntry() 返回键值最小的键值对。
  *
- *  K firstKey()
+ *  K firstKey() 返回此地图中当前的第一个键。
  *
- *  Map.Entry<K,V> floorEntry(K key)
+ *  Map.Entry<K,V> floorEntry(K key) 返回最大的键，小于或等于指定的键；如果没有这样的键，则返回null。
  *
- *  K floorKey(K key)
+ *  K floorKey(K key) 返回小于或等于给定键的最大键，如果没有这样的键，则返回 null 。
  *
- *  void forEach(BiConsumer<? super K,? super V> action)
+ *  void forEach(BiConsumer<? super K,? super V> action) 对Map中的每个条目执行给定的操作，直到所有条目都已处理或该操作引发异常为止。
  *
- *  V get(Object key)
+ *  V get(Object key) 如果此映射包含该键的映射，返回到指定键所映射的值，否则返回 null
  *
- *  SortedMap<K,V> headMap(K toKey)
+ *  SortedMap<K,V> headMap(K toKey) 返回键值严格小于toKey的键值对。
  *
- *  NavigableMap<K,V> headMap(K toKey, boolean inclusive)
+ *  NavigableMap<K,V> headMap(K toKey, boolean inclusive) 返回其键小于（或等于（如果包含）为true的话）toKey的键值对。
  *
- *  Map.Entry<K,V> higherEntry(K key)
+ *  Map.Entry<K,V> higherEntry(K key) 返回严格大于给定键的最小键；如果没有这样的键，则返回null。
  *
- *  K higherKey(K key)
+ *  K higherKey(K key) 如果Map包含指定键的映射，则用于返回true。
  *
- *  Set<K> keySet()
+ *  Set<K> keySet() 返回Map中所有Entry（键值对）的集合。
  *
- *  Map.Entry<K,V> lastEntry()
+ *  Map.Entry<K,V> lastEntry() 返回具有最大键的键值对；如果没有这样的键，则返回null。
  *
- *  K lastKey()
+ *  K lastKey() 返回当前在此地图中的最后（最高）键。
  *
- *  Map.Entry<K,V> lowerEntry(K key)
+ *  Map.Entry<K,V> lowerEntry(K key) 返回与最大键严格小于给定键的key-value的Entry对象；如果没有这样的键，则返回null。
  *
- *  K lowerKey(K key)
+ *  K lowerKey(K key) 返回的最大key严格小于给定的key；如果没有这样的key，则返回null。
  *
- *  NavigableSet<K> navigableKeySet()
+ *  NavigableSet<K> navigableKeySet() 返回Map中包含所有key的NavigableSet集合。
  *
- *  Map.Entry<K,V> pollFirstEntry()
+ *  Map.Entry<K,V> pollFirstEntry() 删除并返回与Map中最小键关联的key-value映射；如果映射为空，则返回null。
  *
- *  Map.Entry<K,V> pollLastEntry()
+ *  Map.Entry<K,V> pollLastEntry() 删除并返回与Map中最大键关联的key-value映射；如果映射为空，则返回null。
  *
- *  V put(K key, V value)
+ *  V put(K key, V value) 在Map中插入具有指定键的指定值。
  *
- *  void putAll(Map<? extends K,? extends V> map)
+ *  void putAll(Map<? extends K,? extends V> map) 在Map中插入具有指定键的指定值。
  *
- *  V remove(Object key)
+ *  V remove(Object key) 从此TreeMap中删除此键的映射（如果存在）。
  *
- *  V replace(K key, V value)
+ *  V replace(K key, V value) 方法仅在先前将键映射为某个值时才用于替换指定键的值。
  *
- *  boolean replace(K key, V oldValue, V newValue)
+ *  boolean replace(K key, V oldValue, V newValue) 用指定键的新值替换旧值。
  *
- *  void replaceAll(BiFunction<? super K,? super V,? extends V> function)
+ *  void replaceAll(BiFunction<? super K,? super V,? extends V> function) 方法用在该条目上调用给定函数的结果替换每个条目的值，直到处理完所有条目或该函数引发异常为止。
  *
- *  int size()
+ *  int size() 返回此地图中键值映射的数量。
  *
- *  NavigableMap<K,V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive)
+ *  NavigableMap<K,V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) 返回key-value对，其键的范围从fromKey到toKey。
  *
- *  SortedMap<K,V> subMap(K fromKey, K toKey)
+ *  SortedMap<K,V> subMap(K fromKey, K toKey) 返回key-value对，其键的范围从fromKey（包括）到toKey（不包括）。
  *
- *  SortedMap<K,V> tailMap(K fromKey)
+ *  SortedMap<K,V> tailMap(K fromKey) 返回键值大于或等于fromKey的键值对。
  *
- *  NavigableMap<K,V> tailMap(K fromKey, boolean inclusive)
+ *  NavigableMap<K,V> tailMap(K fromKey, boolean inclusive) 从键返回大于（或等于，如果包含在内，则为真）的键/值对。
  *
- *  Collection<V> values()
+ *  Collection<V> values() 返回TreeMap中包含value的集合。
  *
  *
  *  以下方法继承于java.util.Map
